@@ -2,7 +2,7 @@
   {
     "environment": [],
     "name": "simple-app",
-    "image": "965032684114.dkr.ecr.eu-west-1.amazonaws.com/terraform-workshop:latest",
+    "image": "${image}",
     "cpu": 10,
     "memory": 500,
     "portMappings": [

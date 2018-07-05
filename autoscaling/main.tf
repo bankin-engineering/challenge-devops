@@ -48,12 +48,14 @@ resource "aws_security_group" "awsvpc_sg" {
   }
 }
 
+data "aws_caller_identity" "current" {}
+
 resource "aws_launch_configuration" "ecs-launch-configuration" {
   name = "${var.name}-alc"
   // TODO
   image_id = "?"
   instance_type = "t2.micro"
-  iam_instance_profile = "arn:aws:iam::965032684114:instance-profile/ecsInstanceRole"
+  iam_instance_profile = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:instance-profile/ecsInstanceRole"
   // TODO
   security_groups = ["?"]
   associate_public_ip_address = "true"
